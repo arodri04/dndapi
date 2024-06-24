@@ -9,7 +9,7 @@ def home():
 
 @app.route("/spells/<spell_name>")
 def get_spell(spell_name):
-    with open("spells.json", "r", encoding="utf8") as f:
+    with open("DND\spells.json", "r", encoding="utf8") as f:
         spells = ijson.items(f, "item")
         for i in spells:
             if i["name"].lower() == spell_name.lower():
@@ -18,6 +18,15 @@ def get_spell(spell_name):
         else:
             return "Spell Not Found", 404
 
+@app.route("/classes/<class_name>")
+def get_class(class_name):
+    with open("DND\classes.json", "r", encoding="utf8") as f:
+        classes = ijson.items(f, "item")
+
+        for i in classes:
+            for n in i.keys():
+                if n.lower() == class_name.lower():
+                    return i[n]
 
             
 
