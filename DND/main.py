@@ -27,6 +27,17 @@ def get_class(class_name):
             for n in i.keys():
                 if n.lower() == class_name.lower():
                     return i[n]
+@app.route("/races/<race_name>")
+def get_race(race_name):
+    with open('DND/races.json', "r", encoding="utf8") as f:
+        races =  ijson.items(f, "item")
+        print(races)
+        for i in races:
+            for n in i:
+                if n.lower() == race_name.lower():
+                    return i[n], 200
+            else:
+                return "Pick Dwarf, Elf, Hafling, Human, DragonBorn, Gnome, Half-Elf, Half-Orc, or Tiefling"
 
             
 

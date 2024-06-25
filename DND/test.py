@@ -3,7 +3,7 @@ import ijson
 
 inpspell = "burning hands"
 inpclass = "Paladin"
-
+inprace = "Dwarf"
 
 
 # with open("DND\spells.json", "r", encoding="utf8") as f:
@@ -22,3 +22,11 @@ inpclass = "Paladin"
 #         for n in i.keys():
 #             if n.lower() == inpclass.lower():
 #                 print(i[n])
+
+with open('DND/races.json', "r", encoding="utf8") as f:
+    races =  ijson.items(f, "item")
+    print(races)
+    for i in races:
+        for n in i:
+            if n == inprace:
+                print(i[n])
